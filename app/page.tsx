@@ -20,6 +20,18 @@ function Masonry({ items }: { items: Wallpaper[] }) {
 
 export default async function Home() {
   const data = await getHomeData();
+  if (!data.trending.length) {
+    return (
+      <div className="mx-auto flex min-h-[70vh] max-w-xl flex-col items-center justify-center gap-4 px-4 text-center">
+        <span className="grid size-16 place-items-center rounded-2xl bg-accent/15 text-3xl">🖼️</span>
+        <h1 className="text-2xl font-semibold tracking-tight text-fg">No wallpapers yet</h1>
+        <p className="text-muted">
+          The database is connected but empty. Wallpapers appear here after the first sync from Reddit, which needs Reddit API keys in{" "}
+          <code className="rounded bg-hover px-1">.env.local</code>.
+        </p>
+      </div>
+    );
+  }
   return (
     <>
       <Hero items={data.hero} />

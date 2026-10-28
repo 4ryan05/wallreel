@@ -4,6 +4,14 @@ import { isSupabaseConfigured, SUPABASE_ANON_KEY, SUPABASE_URL } from "@/lib/sup
 
 /** Refreshes the Supabase session cookie on navigation so server code sees a valid user. */
 export async function proxy(request: NextRequest) {
+  // Supabase email links may land on the Site URL with ?code=…; finish the sign-in at the callback.
+  const code = request.nextUrl.searchParams.get("code");
+  if (isSupabaseConfigured && code && !request.nextUrl.pathname.startsWith("/auth/")) {
+    const url = new URL("/auth/callback", request.url);
+    url.searchParams.set("code", code);
+    url.searchParams.set("next", request.nextUrl.pathname);
+    return NextResponse.redirect(url);
+  }
   let response = NextResponse.next({ request });
   if (!isSupabaseConfigured) return response;
   const db = createServerClient(SUPABASE_URL, SUPABASE_ANON_KEY, {

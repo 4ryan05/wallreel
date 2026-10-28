@@ -38,7 +38,7 @@ function UserMenu() {
     return (
       <Link
         href="/login"
-        className="inline-flex h-10 items-center gap-2 rounded-full bg-accent px-4 text-sm font-medium text-accent-fg transition-transform hover:scale-[1.03] active:scale-95"
+        className="inline-flex h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-accent px-4 text-sm font-medium text-accent-fg transition-transform hover:scale-[1.03] active:scale-95"
       >
         <LogIn className="size-4" />
         <span className="hidden sm:inline">Sign in</span>
