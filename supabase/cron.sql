@@ -8,7 +8,7 @@ select cron.schedule(
   '*/10 * * * *',
   $$
   select net.http_get(
-    url := 'https://YOUR-SITE.vercel.app/api/cron/sync',
+    url := 'https://wallreel.vercel.app/api/cron/sync',
     headers := jsonb_build_object('Authorization', 'Bearer YOUR_CRON_SECRET'),
     timeout_milliseconds := 290000
   );

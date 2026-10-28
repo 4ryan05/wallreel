@@ -17,13 +17,13 @@ Without any keys the site runs in **demo mode** on sample photos, so you can try
 
 1. **Supabase**: create a free project at supabase.com. In the SQL editor, run `supabase/migrations/0001_init.sql`.
    - Under Authentication → Providers, enable **Email** and **Google** (you'll need a Google Cloud OAuth client).
-   - Under Authentication → URL Configuration, add `https://YOUR-SITE/auth/callback` (and `http://localhost:3000/auth/callback`) as redirect URLs.
+   - Under Authentication → URL Configuration, add `https://wallreel.vercel.app/auth/callback` (and `http://localhost:3000/auth/callback`) as redirect URLs.
 2. **Reddit API app** for syncing posts: at https://www.reddit.com/prefs/apps create a **script** app. Copy its id and secret.
-3. **Reddit login app** (optional) for "Continue with Reddit": create a **web app** whose redirect URI is `https://YOUR-SITE/auth/reddit/callback`.
+3. **Reddit login app** (optional) for "Continue with Reddit": create a **web app** whose redirect URI is `https://wallreel.vercel.app/auth/reddit/callback`.
 4. Copy `.env.example` to `.env.local` and fill it in. Add the same variables in Vercel → Project → Settings → Environment Variables.
 5. Deploy to Vercel (`vercel` or import the repo), then do the first full sync:
    ```bash
-   curl -H "Authorization: Bearer $CRON_SECRET" "https://YOUR-SITE/api/cron/sync?all=1"
+   curl -H "Authorization: Bearer $CRON_SECRET" "https://wallreel.vercel.app/api/cron/sync?all=1"
    ```
 6. Schedule ongoing syncs: edit `supabase/cron.sql` with your URL and secret, then run it in the Supabase SQL editor. It refreshes 8 subreddits every 10 minutes, which keeps well inside Reddit's free rate limit.
 
