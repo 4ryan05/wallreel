@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+/* Theme tokens. Each theme sets the surface palette plus an accent swatch set;
+   [data-accent] then picks one swatch as --accent. */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b0b10;
+  --bg-elev: #15151d;
+  --bg-sunken: #08080c;
+  --bg-hover: #1e1e29;
+  --fg: #ececf3;
+  --fg-muted: #a3a3b5;
+  --fg-subtle: #6d6d80;
+  --line: #262633;
+  --c-mauve: #b794f6; --c-blue: #7aa2f7; --c-pink: #f472b6; --c-peach: #fb923c;
+  --c-green: #4ade80; --c-teal: #2dd4bf; --c-red: #f87171; --c-lavender: #a5b4fc; --c-yellow: #facc15;
+  --overlay: rgb(5 5 10 / 0.72);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f6f6f9;
+  --bg-elev: #ffffff;
+  --bg-sunken: #ececf2;
+  --bg-hover: #e7e7ef;
+  --fg: #15151d;
+  --fg-muted: #55556a;
+  --fg-subtle: #8a8aa0;
+  --line: #e0e0ea;
+  --c-mauve: #7c3aed; --c-blue: #2563eb; --c-pink: #db2777; --c-peach: #ea580c;
+  --c-green: #16a34a; --c-teal: #0d9488; --c-red: #dc2626; --c-lavender: #4f46e5; --c-yellow: #ca8a04;
+  --overlay: rgb(20 20 30 / 0.55);
+}
+
+[data-theme="latte"] {
+  color-scheme: light;
+  --bg: #eff1f5; --bg-elev: #e6e9ef; --bg-sunken: #dce0e8; --bg-hover: #ccd0da;
+  --fg: #4c4f69; --fg-muted: #5c5f77; --fg-subtle: #8c8fa1; --line: #ccd0da;
+  --c-mauve: #8839ef; --c-blue: #1e66f5; --c-pink: #ea76cb; --c-peach: #fe640b;
+  --c-green: #40a02b; --c-teal: #179299; --c-red: #d20f39; --c-lavender: #7287fd; --c-yellow: #df8e1d;
+  --overlay: rgb(76 79 105 / 0.5);
+}
+
+[data-theme="frappe"] {
+  color-scheme: dark;
+  --bg: #303446; --bg-elev: #292c3c; --bg-sunken: #232634; --bg-hover: #414559;
+  --fg: #c6d0f5; --fg-muted: #a5adce; --fg-subtle: #838ba7; --line: #414559;
+  --c-mauve: #ca9ee6; --c-blue: #8caaee; --c-pink: #f4b8e4; --c-peach: #ef9f76;
+  --c-green: #a6d189; --c-teal: #81c8be; --c-red: #e78284; --c-lavender: #babbf1; --c-yellow: #e5c890;
+  --overlay: rgb(35 38 52 / 0.75);
+}
+
+[data-theme="macchiato"] {
+  color-scheme: dark;
+  --bg: #24273a; --bg-elev: #1e2030; --bg-sunken: #181926; --bg-hover: #363a4f;
+  --fg: #cad3f5; --fg-muted: #a5adcb; --fg-subtle: #8087a2; --line: #363a4f;
+  --c-mauve: #c6a0f6; --c-blue: #8aadf4; --c-pink: #f5bde6; --c-peach: #f5a97f;
+  --c-green: #a6da95; --c-teal: #8bd5ca; --c-red: #ed8796; --c-lavender: #b7bdf8; --c-yellow: #eed49f;
+  --overlay: rgb(24 25 38 / 0.75);
+}
+
+[data-theme="mocha"] {
+  color-scheme: dark;
+  --bg: #1e1e2e; --bg-elev: #181825; --bg-sunken: #11111b; --bg-hover: #313244;
+  --fg: #cdd6f4; --fg-muted: #a6adc8; --fg-subtle: #7f849c; --line: #313244;
+  --c-mauve: #cba6f7; --c-blue: #89b4fa; --c-pink: #f5c2e7; --c-peach: #fab387;
+  --c-green: #a6e3a1; --c-teal: #94e2d5; --c-red: #f38ba8; --c-lavender: #b4befe; --c-yellow: #f9e2af;
+  --overlay: rgb(17 17 27 / 0.75);
+}
+
+:root { --accent: var(--c-mauve); }
+[data-accent="blue"] { --accent: var(--c-blue); }
+[data-accent="pink"] { --accent: var(--c-pink); }
+[data-accent="peach"] { --accent: var(--c-peach); }
+[data-accent="green"] { --accent: var(--c-green); }
+[data-accent="teal"] { --accent: var(--c-teal); }
+[data-accent="red"] { --accent: var(--c-red); }
+[data-accent="lavender"] { --accent: var(--c-lavender); }
+[data-accent="yellow"] { --accent: var(--c-yellow); }
+
+:root {
+  /* Text on top of the accent colour: dark text for pastel accents, white for saturated ones. */
+  --accent-fg: #11111b;
+}
+[data-theme="light"],
+[data-theme="latte"] {
+  --accent-fg: #ffffff;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-elev: var(--bg-elev);
+  --color-sunken: var(--bg-sunken);
+  --color-hover: var(--bg-hover);
+  --color-fg: var(--fg);
+  --color-muted: var(--fg-muted);
+  --color-subtle: var(--fg-subtle);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  background: var(--bg);
+  scrollbar-gutter: stable;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 35%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Theme switch crossfade via the View Transitions API. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
+}
+
+/* ---------- Masonry grid ----------
+   Pure-CSS masonry: rows are 1/20 of a column's width, and each card spans
+   rows according to its aspect ratio. Works with server rendering and needs no JS measuring. */
+.masonry {
+  container-type: inline-size;
+  --cols: 2;
+  --gap: 10px;
+  --unit: calc((100cqi - (var(--cols) - 1) * var(--gap)) / var(--cols) / 20);
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  grid-auto-rows: var(--unit);
+  grid-auto-flow: row dense;
+  column-gap: var(--gap);
+}
+@media (min-width: 640px) { .masonry { --cols: 3; --gap: 12px; } }
+@media (min-width: 1024px) { .masonry { --cols: 4; --gap: 14px; } }
+@media (min-width: 1536px) { .masonry { --cols: 5; } }
+@media (min-width: 2200px) { .masonry { --cols: 6; } }
+
+.masonry-item {
+  /* Leave one unit below each card as the vertical gap. */
+  padding-bottom: var(--unit);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 300px;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+.animate-rise {
+  animation: rise 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes kenburns {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to { transform: scale(1.14) translate3d(-1.5%, -1%, 0); }
+}
+.kenburns {
+  animation: kenburns 9s ease-out both;
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--bg-elev) 0%, var(--bg-hover) 50%, var(--bg-elev) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+[data-motion="reduced"] *,
+[data-motion="reduced"] *::before,
+[data-motion="reduced"] *::after {
+  animation-duration: 0.001ms !important;
+  transition-duration: 0.001ms !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
